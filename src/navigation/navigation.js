@@ -11,8 +11,8 @@ function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="HomeNavigation" options={{headerShown: false}} component={HomeNavigation} />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
