@@ -1,14 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {View} from 'react-native'
 import Navigation from './src/navigation/navigation';
+import {StatusBar} from 'expo-status-bar'
 
 export default function App() {
   return (
-    <SafeAreaView className='flex-1 bg-white'>
-
+    
+      
       <Navigation/>
-    </SafeAreaView>
+    
   );
 }
 

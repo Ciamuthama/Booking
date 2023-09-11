@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, Text } from "react-native";
+import { View, Text, Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -9,27 +9,31 @@ import CheckInScreen from "../screens/CheckInScreen.js";
 
 const Tab = createBottomTabNavigator();
 
+const {width,height} = Dimensions.get('window')
+
 function HomeNavigation() {
   return (
+    <View style={{width, height}}>
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor:'black',
-        tabBarLabelStyle:{fontSize:15, fontWeight:'600',},
+          tabBarLabelStyle: { fontSize: 15, fontWeight: '600', textAlignVertical:'center' },
+        tabBarLabelPosition:'beside-icon',
+        tabBarVisibilityAnimationConfig: true,
         tabBarStyle: {
           position: "absolute",
           bottom: 20,
-          left: 10,
-          right: 10,
-          justifyContent: "center",
-          alignItem: "center",
-          flex: 1,
-          paddingBottom: 15,
+          left: 40,
+          right: 40,
           height: 90,
           borderTopWidth: 0,
           elevation: 0,
-          backgroundColor: "gray",
-          borderRadius: 10,
+          backgroundColor: "#ED1C24",
+          borderTopRightRadius: 24,
+          borderTopLeftRadius: 8,
+          borderBottomLeftRadius:24,
+          borderBottomRightRadius:8
         },
       }}
     >
@@ -38,12 +42,11 @@ function HomeNavigation() {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <View className="flex justify-center -mb-5">
+            <View className="flex justify-center ">
               <Ionicons
                 name={focused ? "md-home-sharp" : "md-home-outline"}
                 size={24}
                 color="black"
-                
               />
               
             </View>
@@ -56,7 +59,7 @@ function HomeNavigation() {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <View className="flex justify-center align-middle -mb-5">
+            <View className="flex justify-center align-middle">
               <Ionicons
                 name={focused ? "airplane-sharp" : "airplane-outline"}
                 size={24}
@@ -67,46 +70,14 @@ function HomeNavigation() {
         }}
         component={BookingScreen}
       />
-      <Tab.Screen
-        name="Trips"
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View className="flex justify-center align-middle -mb-5">
-              <Ionicons
-                name={focused ? "ios-briefcase-sharp" : "ios-briefcase-outline"}
-                size={24}
-                color="black"
-              />
-             
-            </View>
-          ),
-        }}
-        component={TripScreen}
-      />
-       <Tab.Screen
-        name="Check In"
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View className="flex justify-center align-middle -mb-5">
-              <Ionicons
-                name={focused ? "bus" : "bus-outline"}
-                size={24}
-                color="black"
-              />
-            </View>
-          ),
-        }}
-        component={CheckInScreen}
-      />
+     
       <Tab.Screen
         name="Profile"
         options={{
           headerShown: false,
          
           tabBarIcon: ({ focused }) => (
-            <View className='flex justify-center align-middle -mb-5'>
+            <View className='flex justify-center align-middle'>
               <Ionicons
                 name={focused ? "md-person" : "md-person-outline"}
                 size={24}
@@ -119,7 +90,8 @@ function HomeNavigation() {
         }}
         component={ProfileScreen}
       />
-    </Tab.Navigator>
+      </Tab.Navigator>
+      </View>
   );
 }
 
