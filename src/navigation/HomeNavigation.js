@@ -9,24 +9,25 @@ import CheckInScreen from "../screens/CheckInScreen.js";
 
 const Tab = createBottomTabNavigator();
 
-const {width,height} = Dimensions.get('window')
+const {width, height} = Dimensions.get('screen')
 
 function HomeNavigation() {
   return (
-    <View style={{width, height}}>
+    <View style={{width,height}}>
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor:'black',
           tabBarLabelStyle: { fontSize: 15, fontWeight: '600', textAlignVertical:'center' },
         tabBarLabelPosition:'beside-icon',
-        tabBarVisibilityAnimationConfig: true,
+        tabBarVisibilityAnimationConfig: false,
+        tabBarHideOnKeyboard:true,
         tabBarStyle: {
           position: "absolute",
-          bottom: 20,
+          bottom: 70,
           left: 40,
           right: 40,
-          height: 90,
+          height: 70,
           borderTopWidth: 0,
           elevation: 0,
           backgroundColor: "#ED1C24",
