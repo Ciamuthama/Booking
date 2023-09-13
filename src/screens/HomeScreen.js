@@ -10,12 +10,12 @@ export default function HomeScreen() {
   return (
     <View className="flex-1 bg-neutral-100">
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View>
-          <Image source={require('../../assets/image/kq3.jpg')} style={{height: wp(90), width:wp(100)}} />
+        <View style={{backgroundColor: "#ED1C24",borderBottomRightRadius:0}}>
+          <Image source={require('../../assets/image/kq3.jpg')} style={{height: wp(90), width:wp(100), borderBottomRightRadius:190}}  className='shadow-black  shadow-2xl '/>
         </View>
         <View className="mx-6  -mt-9 shadow-black shadow-2xl">
           <View
-            className="flex-row items-center shadow-inner p-4 space-x-2 pl-6"
+            className="flex-row items-center shadow-inner p-4 space-x-2  pl-6"
             style={{
               borderTopRightRadius: 24,
               borderTopLeftRadius: 8,
