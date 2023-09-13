@@ -29,7 +29,7 @@ function HomeNavigation() {
           right: 40,
           height: 70,
           borderTopWidth: 0,
-          elevation: 0,
+          elevation:1,
           backgroundColor: "#ED1C24",
           borderTopRightRadius: 24,
           borderTopLeftRadius: 8,
