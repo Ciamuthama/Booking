@@ -11,7 +11,7 @@ export default function FlightStatus() {
 
   return (
     <View>
-     <TouchableOpacity className='flex items-center space-y-2 mx-2 bg-orange-500 p-10' onPress={() => setOpen(true)}>
+     <TouchableOpacity className='flex items-center space-y-2 mx-2 bg-orange-500 rounded-xl p-7 px-10 ' onPress={() => setOpen(true)}>
             <Text className='text-neutral-900 font-medium'>FlightStatus</Text>
             <Modal isVisible={open}>
               <View className='bg-white w-full h-1/4' style={{

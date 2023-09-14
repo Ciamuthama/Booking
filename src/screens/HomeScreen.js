@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TextInput, Image } from "react-native";
 import React from "react";
 import { widthPercentageToDP as wp ,heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import Home from "../components/home";
 
 export default function HomeScreen() {
@@ -24,7 +24,7 @@ export default function HomeScreen() {
               backgroundColor:'rgba(126,126,126,0.8)',
             }}
           >
-            <MaterialCommunityIcons name="airplane-search" size={24} color="black" />
+            <Ionicons name="search" size={24} color="black" />
             <TextInput
               placeholder="Search Destination"
               placeholderTextColor={'black'}

@@ -15,13 +15,12 @@ export default function QuickTabs() {
 
   return (
     <View>
-      <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} className='space-x-2 mt-10'>
-        <View className='flex-row justify-center'>
+      <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} className='space-x-2 mt-6'>
+        <View className='flex-row justify-center '>
           <Checkin />
           <FlightSchedule />
           <FlightStatus />
           <ManageBookings/>
-
        </View>
       </ScrollView>
     </View>

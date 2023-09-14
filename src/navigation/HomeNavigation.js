@@ -18,7 +18,7 @@ function HomeNavigation() {
       screenOptions={{
         tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor:'black',
-          tabBarLabelStyle: { fontSize: 15, fontWeight: '600', textAlignVertical:'center' },
+        tabBarLabelStyle: { fontSize: 15, fontWeight: '600', textAlignVertical:'center' },
         tabBarLabelPosition:'beside-icon',
         tabBarVisibilityAnimationConfig: false,
         tabBarHideOnKeyboard:true,
@@ -42,12 +42,12 @@ function HomeNavigation() {
         name="Home"
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused, color,size }) => (
             <View className="flex justify-center ">
               <Ionicons
                 name={focused ? "md-home-sharp" : "md-home-outline"}
-                size={24}
-                color="black"
+                size={size}
+                color={color}
               />
               
             </View>
@@ -59,12 +59,12 @@ function HomeNavigation() {
         name="Book Flight"
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View className="flex justify-center align-middle">
+          tabBarIcon: ({ focused, color,size }) => (
+            <View className="flex justify-center align-middle -rotate-45">
               <Ionicons
                 name={focused ? "airplane-sharp" : "airplane-outline"}
-                size={24}
-                color="black"
+                size={size}
+                color={color}
               />
             </View>
           ),
@@ -77,12 +77,12 @@ function HomeNavigation() {
         options={{
           headerShown: false,
          
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused, color,size }) => (
             <View className='flex justify-center align-middle'>
               <Ionicons
                 name={focused ? "md-person" : "md-person-outline"}
-                size={24}
-                color="black"
+                size={size}
+                color={color}
                 
               />
              

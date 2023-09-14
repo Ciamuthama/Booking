@@ -4,9 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import HomeNavigation from './HomeNavigation';
 import CheckInScreen from '../screens/CheckInScreen';
-import FlightStatusScreen from '../screens/FlightStatusScreen.js';
-import FlightScheduleScreen from '../screens/FlightScheduleScreen.js'
-import ManageBookings from '../screens/ManageBookings.js';
+import FlightStatusScreen from '../screens/FlightStatusScreen';
+import FlightScheduleScreen from '../screens/FlightScheduleScreen'
+import ManageBookingScreen from '../screens/ManageBookingScreen';
 
 
 const Stack = createNativeStackNavigator();
