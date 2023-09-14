@@ -13,7 +13,7 @@ export default function HomeScreen() {
         <View style={{backgroundColor: "#ED1C24",borderBottomRightRadius:0}}>
           <Image source={require('../../assets/image/kq3.jpg')} style={{height: wp(90), width:wp(100), borderBottomRightRadius:190}}  className='shadow-black  shadow-2xl '/>
         </View>
-        <View className="mx-6  -mt-9 shadow-black shadow-2xl">
+        <View className="mx-6  -mt-10 shadow-black shadow-2xl">
           <View
             className="flex-row items-center shadow-inner p-4 space-x-2  pl-6"
             style={{
@@ -28,7 +28,7 @@ export default function HomeScreen() {
             <TextInput
               placeholder="Search Destination"
               placeholderTextColor={'black'}
-              className="flex-1 text-base mb-1 pl-1 tracking-wider text-white"
+              className="flex-1 text-base mb-1 pl-1 tracking-wider  text-white"
             />
           </View>
         </View>
