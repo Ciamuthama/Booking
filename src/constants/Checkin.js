@@ -11,8 +11,8 @@ export default function Checkin() {
 
   return (
     <View>
-     <TouchableOpacity className='flex items-center space-y-2 mx-2 rounded-xl bg-orange-500 p-7 px-10 ' onPress={() => setOpen(true)}>
-            <Text className='text-neutral-900 font-medium'>Check In</Text>
+     <TouchableOpacity className='flex space-y-2 mx-2 rounded-xl bg-neutral-400 p-5 px-6 ' onPress={() => setOpen(true)}>
+            <Text className='text-neutral-900 font-medium '>Check In</Text>
             <Modal isVisible={open}>
               <View className='bg-white w-full h-1/4' style={{
                 borderTopRightRadius: 24,

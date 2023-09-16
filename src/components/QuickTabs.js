@@ -1,28 +1,25 @@
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
-import Modal from 'react-native-modal';
-import React, { useState } from 'react'
-import Checkin from '../constants/Checkin';
-import FlightSchedule from '../constants/FlightSchedule';
-import FlightStatus from '../constants/FlightStatus';
-import ManageBookings from '../constants/ManageBookings';
-
-
-
-
+import { View, ScrollView } from "react-native";
+import React from "react";
+import Checkin from "../constants/Checkin";
+import FlightSchedule from "../constants/FlightSchedule";
+import FlightStatus from "../constants/FlightStatus";
+import ManageBookings from "../constants/ManageBookings";
 
 export default function QuickTabs() {
-
-
   return (
     <View>
-      <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} className='space-x-2 mt-6'>
-        <View className='flex-row justify-center '>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}
+        className="space-x-2 py-3 my-2"
+      >
+        <View className="flex-row items-center justify-center shadow-2xl ">
           <Checkin />
           <FlightSchedule />
           <FlightStatus />
-          <ManageBookings/>
-       </View>
+          <ManageBookings />
+        </View>
       </ScrollView>
     </View>
-  )
+  );
 }
