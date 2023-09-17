@@ -1,18 +1,26 @@
+import "react-native-gesture-handler";
 import { Image, Pressable, Text, View } from "react-native";
-import React, { useState } from "react";
-import Modal from 'react-native-modal';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useRef } from "react";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-export default function Home({ title, image }) {
-const [open,setOpen] = useState(false)
+export default function Home({ title, image, handlePresentModalPress }) {
 
+
+  
   return (
     <View className="mx-2">
-      <Pressable className="bg-slate-300 mt-5 p-2 rounded-2xl shadow-2xl relative" onPress={()=> setOpen(true)}>
+      <Pressable
+        className="bg-slate-300 mt-5 p-2 rounded-2xl shadow-2xl relative"
+        onPress={handlePresentModalPress}
+      >
         <Text
           className=" absolute z-20 top-4 right-3 p-2 bg-red-600 rounded-bl-xl rounded-tr-xl rounded-tl-sm rounded-br-sm  text-white"
           style={{ fontSize: wp(3) }}
@@ -24,11 +32,32 @@ const [open,setOpen] = useState(false)
           className="rounded-xl"
           style={{ width: wp(40), height: hp(36) }}
           resizeMethod="scale"
-        />
+          />
       </Pressable>
-      <Modal isVisible={open}>
-      <MaterialCommunityIcons name='close-circle' size={24} color='black' onPress={() => setOpen(false)} />
-      </Modal>
+      <View>
+        <BottomSheet  />
+      </View>
     </View>
   );
 }
+function BottomSheet() {
+  const bottomSheetModalRef = useRef(null);
+  const handlePresentModalPress = () => {
+    bottomSheetModalRef.current?.present();
+  };
+
+  const snapPoints = ["25%", "50%"];
+  return (
+  <BottomSheetModalProvider>
+    <BottomSheetModal
+      ref={bottomSheetModalRef}
+      index={1}
+      snapPoints={snapPoints}
+    >
+      <View>
+        <Text>Awesome 🎉</Text>
+      </View>
+    </BottomSheetModal>
+  </BottomSheetModalProvider>
+  )
+};

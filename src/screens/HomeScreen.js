@@ -4,6 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import QuickTabs from "../components/QuickTabs";
 import List from "../constants/List";
@@ -13,6 +14,15 @@ export default function HomeScreen() {
     <View className="flex-1 bg-transparent">
       <View showsVerticalScrollIndicator={false}>
         <View style={{ backgroundColor: "#ED1C24" }}>
+          <View>
+
+          <LinearGradient
+            colors={['transparent', 'rgba(0,0,0,0.2)']}
+            start={[0.5,0]} end={[0.5, 1]}
+            style={{width:wp(100), height:hp(35), borderBottomRightRadius: 190,
+              borderBottomLeftRadius: 20}}
+            className='absolute bottom-0 z-10'
+          />
           <Image
             source={require("../../assets/image/kq3.jpg")}
             style={{
@@ -22,7 +32,8 @@ export default function HomeScreen() {
               borderBottomLeftRadius: 20,
             }}
             className="shadow-black  shadow-2xl "
-          />
+            />
+          </View>
         </View>
         <View className="mx-6  -mt-12 shadow-black shadow-2xl">
           <View
