@@ -1,20 +1,21 @@
 import "react-native-gesture-handler";
 import { Image, Pressable, Text, View } from "react-native";
 import React, { useRef } from "react";
-import {
-  BottomSheetModal,
-  BottomSheetModalProvider,
-} from "@gorhom/bottom-sheet";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-export default function Home({ title, image, handlePresentModalPress }) {
+export default function Home({ title, image, }) {
+  const bottomSheetModalRef = useRef(null);
+  const handlePresentModalPress = () => {
+    bottomSheetModalRef.current?.present();
+  };
 
+  const snapPoints = ["35%","50%","90%"];
 
-  
   return (
     <View className="mx-2">
       <Pressable
@@ -32,32 +33,17 @@ export default function Home({ title, image, handlePresentModalPress }) {
           className="rounded-xl"
           style={{ width: wp(40), height: hp(36) }}
           resizeMethod="scale"
-          />
+        />
       </Pressable>
-      <View>
-        <BottomSheet  />
-      </View>
+      <BottomSheetModal
+        ref={bottomSheetModalRef}
+        index={0}
+        snapPoints={snapPoints}
+      >
+        <View>
+          <Text>Awesome 🎉</Text>
+        </View>
+      </BottomSheetModal>
     </View>
   );
 }
-function BottomSheet() {
-  const bottomSheetModalRef = useRef(null);
-  const handlePresentModalPress = () => {
-    bottomSheetModalRef.current?.present();
-  };
-
-  const snapPoints = ["25%", "50%"];
-  return (
-  <BottomSheetModalProvider>
-    <BottomSheetModal
-      ref={bottomSheetModalRef}
-      index={1}
-      snapPoints={snapPoints}
-    >
-      <View>
-        <Text>Awesome 🎉</Text>
-      </View>
-    </BottomSheetModal>
-  </BottomSheetModalProvider>
-  )
-};

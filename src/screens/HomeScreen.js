@@ -4,6 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import QuickTabs from "../components/QuickTabs";
@@ -11,6 +12,7 @@ import List from "../constants/List";
 
 export default function HomeScreen() {
   return (
+    <BottomSheetModalProvider>
     <View className="flex-1 bg-transparent">
       <View showsVerticalScrollIndicator={false}>
         <View style={{ backgroundColor: "#ED1C24" }}>
@@ -62,5 +64,6 @@ export default function HomeScreen() {
         </View>
       </View>
     </View>
+  </BottomSheetModalProvider>
   );
 }

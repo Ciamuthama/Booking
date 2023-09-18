@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { Data } from "./ExproleData";
+import { Data } from "./ExploreData";
 import Home from "../components/home";
 
 export default function List() {
