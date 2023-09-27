@@ -7,7 +7,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import ImageSvg from '../../assets/Svgs/Image.svg'
+import ImageSvg from '../../assets/svgs/Image.svg'
 import BestPriceSvg from "../constants/BestPrice";
 
 export default function Home({ title, image, desc }) {
@@ -32,25 +32,20 @@ export default function Home({ title, image, desc }) {
 return (
     <View className="mx-2">
       <Pressable
-        className="w-[250px] h-80 bg-zinc-800 rounded-lg relative"
+        className="w-[250px] h-80 p-2 bg-zinc-800 rounded-lg relative"
         onPress={handlePresentModalPress}
       >
       <View >
-        <LinearGradient
-            colors={['transparent', 'rgba(0,0,0,0.3)']}
-            start={[0.5,0]} end={[0.5, 1]}
-            style={{ width: wp(40), height: hp(35)}}
-            className='absolute bottom-0 z-10 rounded-xl'
-          />
+       
+      
         <Image
           source={{ uri: image }}
-          className="w-[230px] h-[220px] bg-stone-300 rounded-lg relative "
+          className="w-full h-[220px] bg-stone-300 rounded-lg "
           width={wp(40)}
           height={hp(36)}
           resizeMethod='auto'
           
         />
-        <ImageSvg ClassName='w-[60px] h-[60px] left-[0.01px] top-0 absolute'/>
 
         </View>
         <Text

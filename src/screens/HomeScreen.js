@@ -1,29 +1,23 @@
-import { View, TextInput } from "react-native";
+import { View, TextInput,Text } from "react-native";
 import React from "react";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { Ionicons } from "@expo/vector-icons";
 import ImageSvg from '../../assets/svgs/Image.svg'
-import QuickTabs from "../components/QuickTabs";
+import RectSvg from '../../assets/svgs/rectangle.svg'
 import List from "../constants/List";
 
 export default function HomeScreen() {
   return (
     <BottomSheetModalProvider>
-    <View className="flex-1 bg-transparent">
+    <View className="flex-1 mt-6 bg-transparent">
       <View showsVerticalScrollIndicator={false}>
-        <View className="w-[50px] h-[50px] mt-[30px] mr-[20px] justify-end items-end bg-stone-300 rounded-[10px] relative">
-          <ImageSvg className="w-6 h-6 left-0 top-0 absolute"/>
-        </View>
-        <View className="mx-6 -mt-12 shadow-black shadow-2xl">
+        <View className="w-[50px] h-[50px] mt-[30px] mb-[30px] flex items-center justify-center left-[390px] bg-stone-400 rounded-2xl relative">
+            <ImageSvg className="align-middle"/>
+          </View>
+          
+        <View className="mx-2 shadow-black shadow-2xl">
           <View
-            className="flex-row items-center  p-4 space-x-2"
-            style={{
-              borderTopRightRadius: 24,
-              borderTopLeftRadius: 8,
-              borderBottomLeftRadius: 24,
-              borderBottomRightRadius: 8,
-              backgroundColor: "rgba(126,126,126,1)",
-            }}
+            className="flex-row items-center p-4 space-x-2 bg-neutral-400 rounded-xl"
           >
             <Ionicons name="search" size={24} color="black" />
             <TextInput
@@ -33,8 +27,11 @@ export default function HomeScreen() {
             />
           </View>
         </View>
-        <View>
-          <QuickTabs />
+          <View className='flex w-full'>
+          <Text className="text-black text-lg font-semibold">Upcoming Flights</Text>
+            <View className='items-center'>
+              <RectSvg width='500px' height='250px' />
+            </View>
         </View>
         <View>
           <List />
