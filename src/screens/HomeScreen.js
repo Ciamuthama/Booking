@@ -17,27 +17,10 @@ export default function HomeScreen() {
       <View showsVerticalScrollIndicator={false}>
         <View style={{ backgroundColor: "#ED1C24" }}>
           <View>
-
-          <LinearGradient
-            colors={['transparent', 'rgba(0,0,0,0.2)']}
-            start={[0.5,0]} end={[0.5, 1]}
-            style={{width:wp(100), height:hp(35), borderBottomRightRadius: 190,
-              borderBottomLeftRadius: 20}}
-            className='absolute bottom-0 z-10'
-          />
-          <Image
-            source={require("../../assets/image/kq3.jpg")}
-            style={{
-              height: wp(80),
-              width: wp(100),
-              borderBottomRightRadius: 190,
-              borderBottomLeftRadius: 20,
-            }}
-            className="shadow-black  shadow-2xl "
-            />
+        
           </View>
         </View>
-        <View className="mx-6  -mt-12 shadow-black shadow-2xl">
+        <View className="mx-6 -mt-12 shadow-black shadow-2xl">
           <View
             className="flex-row items-center  p-4 space-x-2"
             style={{
