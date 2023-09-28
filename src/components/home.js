@@ -32,12 +32,10 @@ export default function Home({ title, image, desc }) {
 return (
     <View className="mx-2">
       <Pressable
-        className="w-[250px] h-80 p-2 bg-zinc-800 rounded-lg relative"
+        className="w-[250px] h-80 p-2 bg-slate-300 rounded-lg relative"
         onPress={handlePresentModalPress}
       >
       <View >
-       
-      
         <Image
           source={{ uri: image }}
           className="w-full h-[220px] bg-stone-300 rounded-lg "
