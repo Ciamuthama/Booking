@@ -30,7 +30,7 @@ export default function ProfileScreen() {
         >
           Setting
         </Text>
-        <TouchableOpacity className='h-12 rounded border border-neutral-400'>
+        <TouchableOpacity className="h-12 rounded border border-neutral-400">
           <Text className="p-1 py-2 text-left text-zinc-400 font-light">
             App Settings
           </Text>
@@ -44,19 +44,19 @@ export default function ProfileScreen() {
         >
           Account
         </Text>
-        <TouchableOpacity className='h-12 rounded border border-neutral-400'>
+        <TouchableOpacity className="h-12 rounded border border-neutral-400">
           <Text className="p-1 py-2 text-left text-zinc-400 font-light">
-          Change account name
+            Change account name
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className='h-12 rounded border border-neutral-400'>
+        <TouchableOpacity className="h-12 rounded border border-neutral-400">
           <Text className="p-1 py-2 text-left text-zinc-400 font-light">
-          Change account password
+            Change account password
           </Text>
         </TouchableOpacity>
-      
-        <TouchableOpacity className='h-12 rounded border border-neutral-400'>
+
+        <TouchableOpacity className="h-12 rounded border border-neutral-400">
           <Text className="p-1 py-2 text-left text-zinc-400 font-light">
             My Trip
           </Text>
@@ -64,31 +64,30 @@ export default function ProfileScreen() {
 
         <TouchableOpacity className='h-12 rounded border border-neutral-400"'>
           <Text className="p-1 py-2 text-left text-zinc-400 font-light">
-          FAQ
+            FAQ
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity className='h-12 rounded border border-neutral-400"'>
           <Text className="p-1 py-2 text-left text-zinc-400 font-light">
-          Help & Feedback
+            Help & Feedback
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity className='h-12 rounded border border-neutral-400"'>
           <Text className="p-1 py-2 text-left text-zinc-400 font-light">
-          Share App
+            Share App
           </Text>
         </TouchableOpacity>
       </View>
 
       <View>
-      <TouchableOpacity className='h-12"'>
+        <TouchableOpacity className='h-12"'>
           <Text className="text-red-500 text-base font-light leading-7">
-          Sign Out
+            Sign Out
           </Text>
         </TouchableOpacity>
       </View>
-
     </SafeAreaView>
   );
 }

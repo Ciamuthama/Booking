@@ -10,8 +10,11 @@ import Home from "../components/home";
 export default function List() {
   return (
     <View>
-      <Text className="text-black text-lg font-semibold leading-snug  ml-3 mb-[16px] mt-2" style={{ fontSize: wp(4) }}>
-      Popular Places
+      <Text
+        className="text-black text-lg font-semibold leading-snug  ml-3 mb-[16px] mt-2"
+        style={{ fontSize: wp(4) }}
+      >
+        Popular Places
       </Text>
       <FlatList
         data={Data}
