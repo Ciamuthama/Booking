@@ -7,10 +7,14 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import { useNavigation } from "@react-navigation/native";
 import ImageSvg from "../../assets/svgs/Image.svg";
 import BestPriceSvg from "../constants/BestPrice";
 
 export default function Home({ title, image, desc }) {
+  const navigation = useNavigation()
+
+
   const bottomSheetModalRef = useRef(null);
   const handlePresentModalPress = () => {
     bottomSheetModalRef.current?.present();
@@ -68,9 +72,13 @@ export default function Home({ title, image, desc }) {
               style={{ width: wp(100), height: hp(40) }}
               resizeMode="cover"
             />
+            <TouchableOpacity className='rounded-xl bg-red-300 p-3' onPress={()=> navigation.navigate('BookingScreen')}>
+              <Text className='text-black'>Book</Text>
+            </TouchableOpacity>
           </View>
           <View>
             <Text classText="font-semibold">{desc}</Text>
+
           </View>
         </View>
       </BottomSheetModal>
