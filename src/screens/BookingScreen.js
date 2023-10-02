@@ -8,7 +8,7 @@ import RoundTrip from '../components/RoundTrip'
 export default function BookingScreen() {
  
   return (
-    <SafeAreaView className='bg-gray flex-1 justify-center align-middle mt-6 '>
+    <SafeAreaView className='bg-white flex-1 flex-column justify-center gap-3 mt-6 '>
          <TouchableOpacity className='bg-orange-300' onPress={()=>(<RoundTrip/>)}>
           <Text className='text-black'>Round Trip</Text>
          </TouchableOpacity>

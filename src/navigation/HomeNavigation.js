@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text, Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import BookingScreen from "../screens/BookingScreen.js";
@@ -11,6 +12,9 @@ const Tab = createBottomTabNavigator();
 
 function HomeNavigation() {
   return (
+    <BottomSheetModalProvider>
+
+    
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "white",
@@ -86,6 +90,7 @@ function HomeNavigation() {
         component={ProfileScreen}
       />
     </Tab.Navigator>
+    </BottomSheetModalProvider>
   );
 }
 

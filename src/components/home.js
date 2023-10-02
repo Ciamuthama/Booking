@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Pressable, Text, View,TouchableOpacity } from "react-native";
 import React, { useCallback, useRef } from "react";
 import { BottomSheetModal, BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 import { LinearGradient } from "expo-linear-gradient";

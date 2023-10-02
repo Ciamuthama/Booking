@@ -12,12 +12,7 @@ export default function HomeScreen() {
       <View showsVerticalScrollIndicator={false}>
         <View className="w-full items-end justify-end">
           <View
-            style={{
-              marginBottom: wp(30),
-              marginTop: wp(30),
-              width: wp(50),
-              height: wp(50),
-            }}
+           
             className="flex items-center justify-center bg-stone-400 rounded-2xl relative"
           >
             <ImageSvg className="align-middle" />
@@ -34,12 +29,13 @@ export default function HomeScreen() {
             />
           </View>
         </View>
-        <View className="flex w-full">
-          <Text className="text-black text-lg font-semibold">
+        <View className="flex w-full mx-2 my-4">
+          <Text className="ml-1 my-2 text-black text-lg font-semibold">
             Upcoming Flights
           </Text>
-          <View className="items-center">
-            <RectSvg width="500px" height="250px" />
+          <View className="w-[445px] h-[250px] relative bg-slate-400 rounded-bl-3xl rounded-br-xl rounded-tr-3xl rounded-tl-xl ">
+           <View className='bg-neutral-100 w-[20px] h-[20px] rounded-full absolute bottom-[50px] -left-[12px]'></View>
+           <View className='bg-neutral-100 w-[20px] h-[20px] rounded-full absolute bottom-[50px] -right-[12px]'></View>
           </View>
         </View>
         <View>
