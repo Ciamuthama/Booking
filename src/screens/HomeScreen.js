@@ -3,7 +3,6 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import ImageSvg from "../../assets/svgs/Image.svg";
-import RectSvg from "../../assets/svgs/rectangle.svg";
 import List from "../constants/List";
 
 export default function HomeScreen() {
