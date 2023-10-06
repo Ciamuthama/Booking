@@ -1,21 +1,69 @@
 import React from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Modal,
+  TextInput,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Dropdown } from "react-native-element-dropdown";
-import { Calendar,CalendarList } from 'react-native-calendars';
-import Logo from '../../assets/logo.svg'
-import { tw } from "nativewind";
+import { Calendar } from "react-native-calendars";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 export default function RoundTrip() {
   const navigation = useNavigation();
   const [value, setValue] = React.useState(null);
   const [isFocus, setIsFocus] = React.useState(false);
+  const [isFocusTwo, setIsFocusTwo] = React.useState(false);
+  const [selectedDates, setSelectedDates] = React.useState([]);
+
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleDayPress = (day) => {
+    const { dateString } = day;
+    let newSelectedDates = [...selectedDates];
+
+    if (newSelectedDates.length === 0 || newSelectedDates.length === 2) {
+      newSelectedDates = [dateString];
+    } else if (newSelectedDates.length === 1) {
+      const startDate = new Date(newSelectedDates[0]);
+      const endDate = new Date(dateString);
+
+      if (startDate > endDate) {
+        newSelectedDates = [dateString, newSelectedDates[0]];
+      } else {
+        newSelectedDates.push(dateString);
+      }
+    }
+    setSelectedDates(newSelectedDates);
+  };
+
+  const generateMarkedDates = (selectedDates) => {
+    const markedDates = {};
+    selectedDates.forEach((date, index) => {
+      if (index === 0) {
+        markedDates[date] = { startingDay: true, color: "blue" };
+      } else if (index === selectedDates.length - 1) {
+        markedDates[date] = { endingDay: true, color: "blue", text: "white" };
+      } else {
+        markedDates[date] = { color: "blue" };
+      }
+    });
+    return markedDates;
+  };
 
   const renderWhereFrom = () => {
     if (value || isFocus) {
       return (
-        <Text style={[styles.label, isFocus && { top: 0, color: "blue" }]}>
-          From
+        <Text
+          style={[
+            styles.label,
+            isFocus && { top: 30, left: 40, color: "blue" },
+          ]}
+        >
+          Where From
         </Text>
       );
     }
@@ -23,31 +71,14 @@ export default function RoundTrip() {
   };
 
   const renderWhereTo = () => {
-    if (value || isFocus) {
+    if (value || isFocusTwo) {
       return (
-        <Text style={[styles.label, isFocus && { top: 0, color: "blue" }]}>
-          Where To
-        </Text>
-      );
-    }
-    return null;
-  };
-
-  const renderTravelers = () => {
-    if (value || isFocus) {
-      return (
-        <Text style={[styles.label, isFocus && { top: 0, color: "blue" }]}>
-          Where To
-        </Text>
-      );
-    }
-    return null;
-  };
-
-  const renderClass = () => {
-    if (value || isFocus) {
-      return (
-        <Text style={[styles.label, isFocus && { top: 0, color: "blue" }]}>
+        <Text
+          style={[
+            styles.label,
+            isFocusTwo && { top: 105, left: 40, color: "blue" },
+          ]}
+        >
           Where To
         </Text>
       );
@@ -56,13 +87,13 @@ export default function RoundTrip() {
   };
 
   const data = [
-    { label: "1", value: "Mobiles" },
-    { label: "2", value: "Appliances" },
-    { label: "3", value: "Cameras" },
-    { label: "4", value: "Computers" },
-    { label: "5", value: "Vegetables" },
-    { label: "6", value: "Diary Products" },
-    { label: "7", value: "Drinks" },
+    { value: "1", label: "Mobiles" },
+    { value: "2", label: "Appliances" },
+    { value: "3", label: "Cameras" },
+    { value: "4", label: "Computers" },
+    { value: "5", label: "Vegetables" },
+    { value: "6", label: "Diary Products" },
+    { value: "7", label: "Drinks" },
   ];
 
   return (
@@ -70,10 +101,12 @@ export default function RoundTrip() {
       {renderWhereFrom()}
       <Dropdown
         style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+        className="mt-10"
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
+        containerStyle={styles.container}
         data={data}
         search={false}
         maxHeight={300}
@@ -88,10 +121,10 @@ export default function RoundTrip() {
           setIsFocus(false);
         }}
         renderLeftIcon={() => (
-          <AntDesign
+          <MaterialCommunityIcons
             style={styles.icon}
             color={isFocus ? "blue" : "black"}
-            name="Safety"
+            name="airplane-takeoff"
             size={20}
           />
         )}
@@ -99,157 +132,92 @@ export default function RoundTrip() {
 
       {renderWhereTo()}
       <Dropdown
-        style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+        style={[styles.dropdown, isFocusTwo && { borderColor: "blue" }]}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
+        containerStyle={styles.container}
+        className="mt-4"
         data={data}
         search={false}
         maxHeight={300}
         labelField="label"
         valueField="value"
-        placeholder={!isFocus ? "Where to" : "..."}
+        placeholder={!isFocusTwo ? "Where to" : "..."}
         value={value}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onFocus={() => setIsFocusTwo(true)}
+        onBlur={() => setIsFocusTwo(false)}
         onChange={(item) => {
           setValue(item.value);
           setIsFocus(false);
         }}
         renderLeftIcon={() => (
-          <AntDesign
+          <MaterialCommunityIcons
             style={styles.icon}
-            color={isFocus ? "blue" : "black"}
-            name="Safety"
+            color={isFocusTwo ? "blue" : "black"}
+            name="airplane-landing"
             size={20}
           />
         )}
       />
 
-      <CalendarList
-        onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
-        pastScrollRange={50}
-        futureScrollRange={50}
-        scrollEnabled={true}
-        showScrollIndicator={true}
-      />
+      <View>
+        <Ionicons
+          name="calendar-outline"
+          size={24}
+          color="black"
+          onPress={() => setIsOpen(true)}
+        />
+        <TextInput
+          value={`${selectedDates || "selectdate"}`}
+          editable={false}
+        />
+      </View>
+      <Modal visible={isOpen}>
+        <Calendar
+          markingType="period"
+          markedDates={generateMarkedDates(selectedDates)}
+          onDayPress={handleDayPress}
+        />
 
-      <Dropdown
-        style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        data={data}
-        search={false}
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={!isFocus ? "Where from" : "..."}
-        value={value}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
-        renderLeftIcon={() => (
-          <AntDesign
-            style={styles.icon}
-            color={isFocus ? "blue" : "black"}
-            name="Safety"
-            size={20}
-          />
-        )}
-      />
+        <Text
+          onPress={() => setIsOpen(false)}
+          className="p-6 bg-red-500 items-center text-center"
+        >
+          Done
+        </Text>
+      </Modal>
 
-      {renderTravelers}
-      <Dropdown
-        style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        data={data}
-        search={false}
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={!isFocus ? "Number of Travelers" : "..."}
-        value={value}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
-        renderLeftIcon={() => (
-          <AntDesign
-            style={styles.icon}
-            color={isFocus ? "blue" : "black"}
-            name="Safety"
-            size={20}
-          />
-        )}
-      />
-
-      {renderClass}
-      <Dropdown
-        style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        data={data}
-        search={false}
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={!isFocus ? "Choose Class" : "..."}
-        value={value}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
-        renderLeftIcon={() => (
-          <AntDesign
-            style={styles.icon}
-            color={isFocus ? "blue" : "black"}
-            name="Safety"
-            size={20}
-          />
-        )}
-      />
-
-      <View className='flex justify-between '>
-        <Logo />
+      <View className="flex items-center w-full">
         <TouchableOpacity
-        className="w-[215.50px] p-5 mt-4 bg-green-400 rounded-lg"
-        onPress={() => navigation.navigate("ManageBooking")}
-      >
-        <Text className="text-center text-black">Continue</Text>
-      </TouchableOpacity></View>
+          className="w-[401px] p-5 bg-green-400 rounded-lg"
+          onPress={() => navigation.navigate("ManageBooking")}
+        >
+          <Text className="text-center text-black">Continue</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "rgb(229,229,229)",
     padding: 16,
-    width: 400,
-    height: 50,
+    width: 401,
+    height: 400,
+    marginTop: 14,
+    borderRadius: 10,
+    elevation: 3,
   },
   dropdown: {
-    height: 50,
+    height: 60,
     width: 400,
     borderColor: "gray",
     borderWidth: 0.5,
     borderRadius: 8,
-    paddingHorizontal: 8,
+    padding: 20,
   },
   icon: {
     marginRight: 5,
@@ -258,7 +226,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "rgb(229,229,229)",
     left: 22,
-    top: 5,
+    top: 10,
     zIndex: 999,
     paddingHorizontal: 8,
     fontSize: 14,
