@@ -6,7 +6,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { LinearGradient } from "expo-linear-gradient";
-import Barcode from '../components/Barcode';
+
 
 export default function ManageBookingScreen() {
   return (
@@ -45,16 +45,12 @@ export default function ManageBookingScreen() {
             <Text className='text-black text-lg font-semibold'>date</Text>
           </View></View>
 
-        <View className='items-center border-t-[2px] border-dashed border-neutral-400 p-3'>
-          <View className='w-6 h-6 rounded-full bg-neutral-100 absolute -top-[13px] -left-[13px]'></View>
-          <View className='w-6 h-6 rounded-full bg-neutral-100 absolute -top-[13px] -right-[13px]'></View>
+        <View className='items-center border-t-[0.125rem] border-dashed border-neutral-400 p-3'>
+          <View className='w-6 h-6 rounded-full bg-neutral-100 absolute -top-[0.8125rem] -left-[0.8125rem]'></View>
+          <View className='w-6 h-6 rounded-full bg-neutral-100 absolute -top-[0.8125rem] -right-[0.8125rem]'></View>
           <Text className='text-black font-bold text-base'>Boarding pass</Text>
 
-          <Barcode
-            value="    "
-            options={{ format: 'CODE128', background: 'rgba(255,255,255,0.1)', height: wp(10), }}
-          />
-
+         
         </View>
       </View>
     </SafeAreaView>

@@ -60,7 +60,7 @@ export default function RoundTrip() {
         <Text
           style={[
             styles.label,
-            isFocus && { top: 30, left: 40, color: "blue" },
+            isFocus && { top: 30, left: 40, color: "blue" }, value && {display:'none'}
           ]}
         >
           Where From
@@ -76,7 +76,7 @@ export default function RoundTrip() {
         <Text
           style={[
             styles.label,
-            isFocusTwo && { top: 105, left: 40, color: "blue" },
+            isFocusTwo && { top: 105, left: 40, color: "blue" }, value && {display:'none'}
           ]}
         >
           Where To
@@ -97,7 +97,7 @@ export default function RoundTrip() {
   ];
 
   return (
-    <View className="flex items-center mx-2 h-[700px]  bg-neutral-200 rounded-2xl">
+    <View className="flex items-center mx-2 h-[700px] px-5 bg-neutral-200 rounded-2xl">
       {renderWhereFrom()}
       <Dropdown
         style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
@@ -162,16 +162,19 @@ export default function RoundTrip() {
         )}
       />
 
-      <View>
+      <View className='flex flex-row justify-between items-center w-full rounded-xl bg-neutral-300 mx-2 my-2'>
+        <TextInput
+          value={`${selectedDates}`}
+          placeholder="2023-10-10 to 2023-12-10"
+          placeholderTextColor={'rgba(0,0,0,0.6)'}
+          editable={false}
+          className=' space-y-2 p-4'
+        />
         <Ionicons
           name="calendar-outline"
-          size={24}
+          size={32}
           color="black"
           onPress={() => setIsOpen(true)}
-        />
-        <TextInput
-          value={`${selectedDates || "selectdate"}`}
-          editable={false}
         />
       </View>
       <Modal visible={isOpen}>

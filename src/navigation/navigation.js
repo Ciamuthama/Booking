@@ -14,6 +14,7 @@ function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="ManageBooking" component={ManageBookingScreen} />
         <Stack.Screen
           name="HomeNavigation"
           options={{ headerShown: false }}
@@ -23,7 +24,6 @@ function Navigation() {
         <Stack.Screen name="CheckIn" component={CheckInScreen} />
         <Stack.Screen name="FlightStatus" component={FlightStatusScreen} />
         <Stack.Screen name="FlightSchedule" component={FlightScheduleScreen} />
-        <Stack.Screen name="ManageBooking" component={ManageBookingScreen} />
         
         <Stack.Screen name="BookingScreen" component={BookingScreen} />
       </Stack.Navigator>
