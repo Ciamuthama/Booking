@@ -60,7 +60,8 @@ export default function RoundTrip() {
         <Text
           style={[
             styles.label,
-            isFocus && { top: 30, left: 40, color: "blue" }, value && {display:'none'}
+            isFocus && { top: 30, left: 40, color: "blue" },
+            value && { display: "none" },
           ]}
         >
           Where From
@@ -76,7 +77,8 @@ export default function RoundTrip() {
         <Text
           style={[
             styles.label,
-            isFocusTwo && { top: 105, left: 40, color: "blue" }, value && {display:'none'}
+            isFocusTwo && { top: 105, left: 40, color: "blue" },
+            value && { display: "none" },
           ]}
         >
           Where To
@@ -162,21 +164,19 @@ export default function RoundTrip() {
         )}
       />
 
-      <View className='flex flex-row justify-between items-center w-full rounded-xl bg-neutral-300 mx-2 my-2'>
+      <TouchableOpacity
+        onPress={() => setIsOpen(true)}
+        className="flex flex-row justify-between items-center w-full rounded-xl bg-neutral-300 mx-2 my-2 px-3"
+      >
         <TextInput
           value={`${selectedDates}`}
           placeholder="2023-10-10 to 2023-12-10"
-          placeholderTextColor={'rgba(0,0,0,0.6)'}
+          placeholderTextColor={"rgba(0,0,0,0.6)"}
           editable={false}
-          className=' space-y-2 p-4'
+          className=" space-y-2 p-4"
         />
-        <Ionicons
-          name="calendar-outline"
-          size={32}
-          color="black"
-          onPress={() => setIsOpen(true)}
-        />
-      </View>
+        <Ionicons name="calendar-outline" size={32} color="black" />
+      </TouchableOpacity>
       <Modal visible={isOpen}>
         <Calendar
           markingType="period"
@@ -194,10 +194,12 @@ export default function RoundTrip() {
 
       <View className="flex items-center w-full">
         <TouchableOpacity
-          className="w-[401px] p-5 bg-green-400 rounded-lg"
+          className="w-[401px] p-5 bg-[#31905F] rounded-lg"
           onPress={() => navigation.navigate("ManageBooking")}
         >
-          <Text className="text-center text-black">Continue</Text>
+          <Text className="text-center text-white font-medium text-base">
+            Continue
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

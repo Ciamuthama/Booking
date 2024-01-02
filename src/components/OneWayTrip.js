@@ -23,16 +23,16 @@ export default function OneWayTrip() {
 
   const handleDayPress = (day) => {
     const { dateString } = day;
-    let newSelectedDates = [selectedDates];
+    let newSelectedDates = [...selectedDates];
 
-    if (newSelectedDates.length === 0 || newSelectedDates.length === 1) {
+    if (newSelectedDates.length === 0 || newSelectedDates.length === 2) {
       newSelectedDates = [dateString];
     } else if (newSelectedDates.length === 1) {
-      const startDate = new Date(newSelectedDates[1]);
-      
+      const startDate = new Date(newSelectedDates[0]);
+      const endDate = new Date(dateString);
 
-      if (startDate>1) {
-        newSelectedDates = [dateString, newSelectedDates[1]];
+      if (startDate > endDate) {
+        newSelectedDates = [dateString, newSelectedDates[0]];
       } else {
         newSelectedDates.push(dateString);
       }
@@ -44,9 +44,13 @@ export default function OneWayTrip() {
     const markedDates = {};
     selectedDates.forEach((date, index) => {
       if (index === 0) {
-        markedDates[date] = {  color: "blue" };
-      } 
-      });
+        markedDates[date] = { startingDay: true, color: "blue" };
+      } else if (index === selectedDates.length - 1) {
+        markedDates[date] = { endingDay: true, color: "blue", text: "white" };
+      } else {
+        markedDates[date] = { color: "blue" };
+      }
+    });
     return markedDates;
   };
 
@@ -57,6 +61,7 @@ export default function OneWayTrip() {
           style={[
             styles.label,
             isFocus && { top: 30, left: 40, color: "blue" },
+            value && { display: "none" },
           ]}
         >
           Where From
@@ -73,6 +78,7 @@ export default function OneWayTrip() {
           style={[
             styles.label,
             isFocusTwo && { top: 105, left: 40, color: "blue" },
+            value && { display: "none" },
           ]}
         >
           Where To
@@ -93,7 +99,7 @@ export default function OneWayTrip() {
   ];
 
   return (
-    <View className="flex items-center mx-2 h-[700px]  bg-neutral-200 rounded-2xl">
+    <View className="flex items-center mx-2 h-[700px] px-5 bg-neutral-200 rounded-2xl">
       {renderWhereFrom()}
       <Dropdown
         style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
@@ -158,18 +164,19 @@ export default function OneWayTrip() {
         )}
       />
 
-      <View>
-        <Ionicons
-          name="calendar-outline"
-          size={24}
-          color="black"
-          onPress={() => setIsOpen(true)}
-        />
+      <TouchableOpacity
+      onPress={() => setIsOpen(true)}
+        className="flex flex-row justify-between items-center w-full rounded-xl bg-neutral-300 mx-2 my-2 px-3"
+      >
         <TextInput
-          value={`${selectedDates || "select date"}`}
+          value={`${selectedDates}`}
+          placeholder="2023-10-10 to 2023-12-10"
+          placeholderTextColor={"rgba(0,0,0,0.6)"}
           editable={false}
+          className=" space-y-2 p-4"
         />
-      </View>
+        <Ionicons name="calendar-outline" size={32} color="black" />
+      </TouchableOpacity>
       <Modal visible={isOpen}>
         <Calendar
           markingType="period"
@@ -187,10 +194,12 @@ export default function OneWayTrip() {
 
       <View className="flex items-center w-full">
         <TouchableOpacity
-          className="w-[401px] p-5 bg-green-400 rounded-lg"
+          className="w-[401px] p-5 bg-[#31905F] rounded-lg"
           onPress={() => navigation.navigate("ManageBooking")}
         >
-          <Text className="text-center text-black">Continue</Text>
+          <Text className="text-center text-white font-medium text-base">
+            Continue
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

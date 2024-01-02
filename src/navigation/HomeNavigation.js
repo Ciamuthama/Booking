@@ -13,11 +13,9 @@ const Tab = createBottomTabNavigator();
 function HomeNavigation() {
   return (
     <BottomSheetModalProvider>
-
-    
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: "white",
+        tabBarActiveTintColor: "black",
         tabBarInactiveTintColor: "black",
         tabBarLabelStyle: {
           fontSize: 15,
@@ -28,14 +26,8 @@ function HomeNavigation() {
         tabBarVisibilityAnimationConfig: false,
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
-          //position: "absolute",
-          //bottom: 70,
-          //left: 40,
-          //right: 40,
           height: 60,
-          borderTopWidth: 0,
-          elevation: 1,
-          backgroundColor: "#ED1C24",
+          backgroundColor: "rgb(229,229,229)",
         },
       }}
     >
@@ -43,6 +35,7 @@ function HomeNavigation() {
         name="Home"
         options={{
           headerShown: false,
+          
           tabBarIcon: ({ focused, color, size }) => (
             <View className="flex justify-center ">
               <Ionicons
@@ -60,7 +53,7 @@ function HomeNavigation() {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (
-            <View className="flex justify-center align-middle -rotate-45">
+            <View className={`flex justify-center align-middle ${ focused ? '-rotate-45': '-rotate-90'}`}>
               <Ionicons
                 name={focused ? "airplane-sharp" : "airplane-outline"}
                 size={size}
