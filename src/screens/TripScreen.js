@@ -4,7 +4,7 @@ import React from 'react'
 export default function TripScreen() {
   return (
     <View>
-      <Text>TripScreen</Text>
+      <Text>Trip Screen</Text>
     </View>
   )
 }
